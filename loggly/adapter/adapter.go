@@ -49,7 +49,8 @@ func (l *Adapter) Stream(logstream chan *router.Message) {
 		l.queue <- logglyMessage{
 			Message:           m.Data,
 			ContainerName:     m.Container.Name,
-			ContainerID:       m.Container.ID,
+//			ContainerID:       m.Container.ID,
+			ContainerID:       m.Container.Env,
 			ContainerImage:    m.Container.Config.Image,
 			ContainerHostname: m.Container.Config.Hostname,
 		}
