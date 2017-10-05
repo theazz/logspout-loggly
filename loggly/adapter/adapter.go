@@ -52,7 +52,7 @@ func (l *Adapter) Stream(logstream chan *router.Message) {
 			ContainerID:       m.Container.ID,
 			ContainerImage:    m.Container.Config.Image,
 			ContainerHostname: m.Container.Config.Hostname,
-			ContainerTest:     'test',
+			ContainerTest:     os.Getenv,
 		}
 	}
 }
