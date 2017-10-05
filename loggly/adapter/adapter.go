@@ -46,14 +46,14 @@ func New(logglyToken string, tags string, bufferSize int) *Adapter {
 // Loggly
 func (l *Adapter) Stream(logstream chan *router.Message) {
 	for m := range logstream {
-		marathon := os.GetEnv("MARATHON_APP_ID")
+		marathon := os.Getenv("MARATHON_APP_ID")
 		l.queue <- logglyMessage{
 			Message:               m.Data,
 			ContainerName:         m.Container.Name,
 			ContainerID:           m.Container.ID,
 			ContainerImage:        m.Container.Config.Image,
 			ContainerHostname:     m.Container.Config.Hostname,
-			ContainerMarathonID:   m.Container.Config.Env.MARATHON_APP_ID,
+			ContainerMarathonID:   marathon,
 		}
 	}
 }
