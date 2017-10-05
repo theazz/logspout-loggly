@@ -6,4 +6,5 @@ type logglyMessage struct {
 	ContainerID       string `json:"container_id"`
 	ContainerImage    string `json:"container_image"`
 	ContainerHostname string `json:"hostname"`
+	ContainerTest     string `json:"container_test"`
 }
