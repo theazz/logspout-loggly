@@ -48,6 +48,8 @@ func (l *Adapter) Stream(logstream chan *router.Message) {
 	for m := range logstream {
 //		marathon := os.Getenv("USER")
 		fmt.Printf("TEST")
+		fmt.Printf("TEST")
+		fmt.Errorf("TEST")
 		marathon := "TEST"
 		l.queue <- logglyMessage{
 			Message:               m.Data,
