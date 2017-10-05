@@ -47,6 +47,7 @@ func New(logglyToken string, tags string, bufferSize int) *Adapter {
 func (l *Adapter) Stream(logstream chan *router.Message) {
 	for m := range logstream {
 //		marathon := os.Getenv("USER")
+		fmt.Printf("TEST")
 		marathon := "TEST"
 		l.queue <- logglyMessage{
 			Message:               m.Data,
