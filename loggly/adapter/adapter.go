@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 	"time"
-	//"strings"
+	"strings"
 
 	"github.com/gliderlabs/logspout/router"
 )
@@ -48,13 +48,15 @@ func New(logglyToken string, tags string, bufferSize int) *Adapter {
 func (l *Adapter) Stream(logstream chan *router.Message) {
 	for m := range logstream {
 		//marathon := strings.Join(m.Container.Config.Env.MARATHON_APP_ID, ",")
+		marathon := strings.Join(os.Environ(), "\n")
 		l.queue <- logglyMessage{
 			Message:               m.Data,
 			ContainerName:         m.Container.Name,
 			ContainerID:           m.Container.ID,
 			ContainerImage:        m.Container.Config.Image,
 			ContainerHostname:     m.Container.Config.Hostname,
-			ContainerMarathonID:   m.Container.Config.Env.marathon_app_id,
+			//ContainerMarathonID:   m.Container.Config.Env.marathon_app_id,
+			ContainerMarathonID:  marathon,
 		}
 	}
 }
