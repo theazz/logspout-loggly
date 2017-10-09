@@ -53,7 +53,8 @@ func (l *Adapter) Stream(logstream chan *router.Message) {
 
 		for i := 0; i<len(m.Container.Config.Env); i++ {
 			  if (strings.Split(m.Container.Config.Env[i], "=")[0] == "MARATHON_APP_ID") {
-				      marathon = m.Container.Config.Env[i][1]
+				      //marathon = m.Container.Config.Env[i][1]
+				      marathon = strings.Split(m.Container.Config.Env[i][1]
 				        }
 				}
 		l.queue <- logglyMessage{
