@@ -47,8 +47,15 @@ func New(logglyToken string, tags string, bufferSize int) *Adapter {
 // Loggly
 func (l *Adapter) Stream(logstream chan *router.Message) {
 	for m := range logstream {
-		marathon := strings.Join(m.Container.Config.Env, "\n")
+		//marathon := strings.Join(m.Container.Config.Env, "\n")
 		//marathon := strings.Join(os.Environ(), "\n")
+		var marathon string;
+
+		for i := 0; i<len(m.Container.Config.Env); i++ {
+			  if (strings.Split(m.Container.Config.Env[i], "=")[0] == "MARATHON_APP_ID") {
+				      marathon = m.Container.Config.Env[i][1]
+				        }
+				}
 		l.queue <- logglyMessage{
 			Message:               m.Data,
 			ContainerName:         m.Container.Name,
