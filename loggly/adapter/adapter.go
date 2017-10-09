@@ -50,7 +50,7 @@ func (l *Adapter) Stream(logstream chan *router.Message) {
 //		marathon := os.Getenv("USER")
 //		fmt.Printf("TEST")
 //		fmt.Errorf("TEST")
-		marathon := strings.Join(m.Container.Config.Env(),",")
+		marathon := strings.Join(m.Container(),",")
 		l.queue <- logglyMessage{
 			Message:               m.Data,
 			ContainerName:         m.Container.Name,
