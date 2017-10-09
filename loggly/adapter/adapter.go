@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 	"time"
-//	"strings"
+	"strings"
 
 	"github.com/gliderlabs/logspout/router"
 )
