@@ -54,7 +54,7 @@ func (l *Adapter) Stream(logstream chan *router.Message) {
 			ContainerID:           m.Container.ID,
 			ContainerImage:        m.Container.Config.Image,
 			ContainerHostname:     m.Container.Config.Hostname,
-			ContainerMarathonID:   m.Container.Config.Env.MARATHON_APP_ID,
+			ContainerMarathonID:   m.Container.Config.Env.marathon_app_id,
 		}
 	}
 }
